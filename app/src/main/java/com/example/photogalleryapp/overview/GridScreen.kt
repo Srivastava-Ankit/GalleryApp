@@ -2,6 +2,8 @@
 package com.example.photogalleryapp.overview
 
 
+import android.annotation.SuppressLint
+import androidx.compose.animation.scaleIn
 import androidx.compose.foundation.ExperimentalFoundationApi
 
 import androidx.compose.foundation.clickable
@@ -9,7 +11,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,16 +26,27 @@ import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalFoundationApi
 @Composable
 fun GridScreen(navController: NavHostController, pictureDetails: List<PictureDetails>) {
-    LazyVerticalGrid(columns =  GridCells.Fixed(2) , content = {
-        itemsIndexed(pictureDetails) { index, picture ->
-            Row{
-                ItemLayout(picture, index, navController)
-            }
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text("Nasa Gallery") })
+         },
+        content = {
+            LazyVerticalGrid(columns =  GridCells.Fixed(2) , content = {
+                itemsIndexed(pictureDetails) { index, picture ->
+                    Row{
+                        ItemLayout(picture, index, navController)
+                    }
+                }
+            })
         }
-    })
+    )
+
+
+
 }
 @Composable
 fun ItemLayout(

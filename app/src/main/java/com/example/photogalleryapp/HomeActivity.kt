@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.photogalleryapp.details.DetailsScreen
 import com.example.photogalleryapp.overview.GridScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -68,16 +69,13 @@ fun LazyVerticalGridActivityScreen(pictureDetailsList:List<PictureDetails>) {
         }
 
     Scaffold(
-        topBar = {
-            TopAppBar(title = { Text("Nasa Gallery") }, navigationIcon = navigationIcon)
-        },
         content = {
             NavHost(navController = navController, startDestination = "home") {
                 composable("home") { GridScreen(navController, pictureDetailsList) }
-                /*composable("details/{listId}") { backStackEntry ->
-                    backStackEntry.arguments?.getString("listId")?.let { DetailsScreen(it, navController, pictureViewModel) }
+                composable("details/{listId}") { backStackEntry ->
+                    backStackEntry.arguments?.getString("listId")?.let { DetailsScreen(it, navController, navigationIcon, pictureDetailsList) }
 
-                }*/
+                }
             }
         }
     )
