@@ -1,8 +1,7 @@
-package com.example.photogalleryapp
+package com.example.photogalleryapp.network
 
 import android.util.Log
 import org.json.JSONArray
-import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -22,10 +21,7 @@ class Data {
             Log.d(TAG, text)
             return JSONArray(text)
         }
-
     }
-
-
 }
 
 

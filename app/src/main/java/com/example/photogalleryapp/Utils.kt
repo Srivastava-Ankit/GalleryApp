@@ -1,11 +1,15 @@
 package com.example.photogalleryapp
 
+import android.R
+import android.app.ProgressDialog
+import android.content.Context
 import org.json.JSONArray
-import org.json.JSONObject
+
 
 class Utils {
 
     companion object{
+        private var progress: ProgressDialog? = null
         fun parseData(jsonArray: JSONArray, saveInFile:Boolean):List<PictureDetails>{
             var list:MutableList<PictureDetails> = ArrayList()
             (0 until jsonArray.length()).forEach {
@@ -17,7 +21,6 @@ class Utils {
                     jsonObject.optString("title", ""), jsonObject.optString("url", "")
                 )
                 list.add(picture)
-
             }
             if(saveInFile){
                 saveDataInFile(jsonArray)
@@ -46,6 +49,23 @@ class Utils {
 
             return list
         }*/
+
+
+        fun showLoadingDialog(context:Context) {
+            if (progress == null) {
+                progress = ProgressDialog(context)
+                progress!!.setTitle("Loading")
+                progress!!.setMessage("Wait while loading...")
+            }
+            progress!!.show()
+        }
+
+        fun dismissLoadingDialog() {
+            if (progress != null && progress!!.isShowing) {
+                progress!!.dismiss()
+            }
+        }
+
 
     }
 }
