@@ -1,4 +1,4 @@
-/*
+
 
 package com.example.photogalleryapp.details
 
@@ -17,7 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ShareCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.photogalleryapp.PictureViewModel
 import com.example.photogalleryapp.model.PictureDetails
 import com.example.photogalleryapp.Utils
 import com.example.photogalleryapp.model.Picture
@@ -25,7 +28,8 @@ import com.example.photogalleryapp.overview.NetworkImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 @SuppressLint("UnrememberedMutableState", "UnusedMaterialScaffoldPaddingParameter",
@@ -33,20 +37,18 @@ import com.google.accompanist.pager.rememberPagerState
 )
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun DetailsScreen(picture:Picture) {
+fun DetailsScreen(index:String, viewModel: PictureViewModel) {
 
-    val items = pictureDetails
+    val state = viewModel.state.value
+    val items = state.images
     val pagerState = rememberPagerState()
-    var picture:MutableState<PictureDetails> = mutableStateOf( pictureDetails[index.toInt()])
-
-
+    val globalCoroutine = rememberCoroutineScope()
 
     Utils.showLoadingDialog()
-    */
-/*GlobalScope.launch {
+    globalCoroutine.launch {
         pagerState.animateScrollToPage(page = index.toInt())
         Utils.dismissLoadingDialog()
-    }*//*
+    }
 
 
     Scaffold{
@@ -61,17 +63,18 @@ fun DetailsScreen(picture:Picture) {
             ) { currentPage ->
                 Column {
                     NetworkImage(
-                        url = picture[currentPage].hdurl,
+                        url = items[currentPage].hdurl,
                         contentDescription = null,
-                        modifier = Modifier.fillMaxWidth().fillMaxHeight(.4f)
+                        modifier = Modifier.
+                                 fillMaxWidth()
+                                 .height(300.dp)
                     )
-
-                    Text(text = picture[currentPage].title.trim(),
+                    Text(text = items[currentPage].title.trim(),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(start = 4.dp, end = 4.dp)
+                        modifier = Modifier.padding(top = 4.dp, start = 14.dp, end = 8.dp)
                     )
-                    Text(text = picture[currentPage].explanation.trim(), lineHeight =20.sp,modifier = Modifier.padding(start = 4.dp, end = 4.dp))
+                    Text(text = items[currentPage].explanation.trim(),fontSize = 12.sp, modifier = Modifier.padding(top = 4.dp, start = 14.dp, end = 10.dp))
                 }
             }
         }
@@ -79,4 +82,4 @@ fun DetailsScreen(picture:Picture) {
 
 }
 
-*/
+

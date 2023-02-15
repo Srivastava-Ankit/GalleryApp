@@ -16,14 +16,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
+import com.example.photogalleryapp.details.DetailsScreen
 import com.example.photogalleryapp.model.Picture
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun PictureItem(picture: Picture) {
+fun PictureItem(picture: Picture, index:Int, navController:NavController) {
     Card(
-        modifier = Modifier.padding(4.dp).clickable {  },
+        modifier = Modifier.padding(4.dp).clickable {  navController.navigate("details/$index")  },
         elevation = 5.dp
     ) {
         Box {

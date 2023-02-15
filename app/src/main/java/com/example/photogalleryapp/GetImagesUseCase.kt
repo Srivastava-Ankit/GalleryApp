@@ -21,7 +21,7 @@ class GetImagesUseCase @Inject constructor(
             val images = repository.getImages().map { it.toPicture() }
             emit(Resource.Success<List<Picture>>(images))
         } catch (e: HttpException) {
-            emit(Resource.Error<List<Picture>>(e.localizedMessage ?: "Error occurred"))
+            emit(Resource.Error<List<Picture>>("Network issue or Server is down"))
         } catch (e: IOException) {
             emit(Resource.Error<List<Picture>>("Failed to connect to server \uD83D\uDE22"))
         }
