@@ -4,9 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.photogalleryapp.AppModule
 import com.example.photogalleryapp.PictureViewModel
-import com.example.photogalleryapp.model.Picture
 import com.example.photogalleryapp.model.PictureDetails
-import dagger.hilt.android.lifecycle.HiltViewModel
+
 
 object TestUtils {
 

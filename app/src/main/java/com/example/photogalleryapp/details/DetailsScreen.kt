@@ -3,32 +3,22 @@
 package com.example.photogalleryapp.details
 
 import android.annotation.SuppressLint
-import android.content.Context
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.BottomAppBar
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.app.ShareCompat
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.photogalleryapp.PictureViewModel
-import com.example.photogalleryapp.model.PictureDetails
 import com.example.photogalleryapp.Utils
-import com.example.photogalleryapp.model.Picture
 import com.example.photogalleryapp.overview.NetworkImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 

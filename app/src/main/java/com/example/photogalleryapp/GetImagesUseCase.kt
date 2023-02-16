@@ -2,7 +2,6 @@ package com.example.photogalleryapp
 
 
 import com.example.photogalleryapp.model.Picture
-import com.example.photogalleryapp.model.PictureDetails
 import com.example.photogalleryapp.model.toPicture
 import com.example.photogalleryapp.network.NasaRepository
 import com.example.photogalleryapp.result.Resource

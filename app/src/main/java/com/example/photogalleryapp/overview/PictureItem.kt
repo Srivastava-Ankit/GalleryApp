@@ -18,7 +18,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
-import com.example.photogalleryapp.details.DetailsScreen
 import com.example.photogalleryapp.model.Picture
 
 @OptIn(ExperimentalCoilApi::class)
